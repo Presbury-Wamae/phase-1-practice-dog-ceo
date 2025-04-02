@@ -35,5 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error fetching breeds:", error));
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const breedList = document.getElementById("dog-breeds");
+    
+    breedList.addEventListener("click", (event) => {
+      if (event.target.tagName === "LI") {
+        event.target.style.color = "blue"; // Change to any color you prefer
+      }
+    });
+  });
   
   
