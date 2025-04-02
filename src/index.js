@@ -45,5 +45,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const breedDropdown = document.getElementById("breed-dropdown");
+    const breedList = document.getElementById("dog-breeds");
+    let allBreeds = []; // Store all breeds to filter later
+    
+    // Fetch breeds and store them
+    fetch("https://dog.ceo/api/breeds/list/all")
+      .then(response => response.json())
+      .then(data => {
+        allBreeds = Object.keys(data.message);
+        updateBreedList(allBreeds);
+      });
+  
+    // Function to update the breed list display
+    function updateBreedList(breeds) {
+      breedList.innerHTML = "";
+      breeds.forEach(breed => {
+        const li = document.createElement("li");
+        li.textContent = breed;
+        breedList.appendChild(li);
+      });
+    }
+  
+    // Event listener for dropdown
+    breedDropdown.addEventListener("change", (event) => {
+      const selectedLetter = event.target.value;
+      const filteredBreeds = allBreeds.filter(breed => breed.startsWith(selectedLetter));
+      updateBreedList(filteredBreeds);
+    });
+  });
   
   
