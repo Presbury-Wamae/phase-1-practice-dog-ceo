@@ -17,4 +17,23 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error fetching images:", error));
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const breedUrl = "https://dog.ceo/api/breeds/list/all";
+    
+    fetch(breedUrl)
+      .then(response => response.json())
+      .then(data => {
+        const breeds = Object.keys(data.message);
+        const breedList = document.getElementById("dog-breeds");
+        
+        breeds.forEach(breed => {
+          const li = document.createElement("li");
+          li.textContent = breed;
+          breedList.appendChild(li);
+        });
+      })
+      .catch(error => console.error("Error fetching breeds:", error));
+  });
+  
   
