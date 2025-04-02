@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
         data.message.forEach(imageUrl => {
           const img = document.createElement("img");
           img.src = imageUrl;
-          img.style.width = "200px"; // Adjust size if needed
+          // Adjust size if needed
+          img.style.width = "200px"; 
           img.style.margin = "10px";
           imageContainer.appendChild(img);
         });
@@ -41,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     breedList.addEventListener("click", (event) => {
       if (event.target.tagName === "LI") {
-        event.target.style.color = "blue"; // Change to any color you prefer
+        // Change to any color you prefer
+        event.target.style.color = "blue"; 
       }
     });
   });
@@ -49,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("DOMContentLoaded", () => {
     const breedDropdown = document.getElementById("breed-dropdown");
     const breedList = document.getElementById("dog-breeds");
-    let allBreeds = []; // Store all breeds to filter later
+    // Store all breeds to filter later
+    let allBreeds = []; 
     
     // Fetch breeds and store them
     fetch("https://dog.ceo/api/breeds/list/all")
